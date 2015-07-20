@@ -48,7 +48,6 @@ func parseS3Path(s3Path string) (string, string, error) {
 
 func uploadFile(localPath string, bucket string, remotePath string) error {
 	s3Key := path.Join(remotePath, path.Base(localPath))
-	log.Printf("s3Key [%s]", s3Key)
 	svc := s3.New(&aws.Config{
 		Credentials: credentials.NewStaticCredentials(*awsAccessKeyId, *awsSecretAccessKey, ""),
 		Region: region,
